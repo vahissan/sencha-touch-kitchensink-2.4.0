@@ -1,10 +1,114 @@
-// The following two lines import the default Sencha Touch theme. If you are building
-// a new theme, remove them and the add your own CSS on top of the base CSS (which
-// is already included in your app.json file).
+@font-face {
+    font-family: 'font-en';
+    src: url('../fonts/Axiata_Book.otf');
+}
+
+/* default theme */
+$main-color: #3d4b55;
+$compl-color: #ED1C24;
+
+///* gold theme */
+//$main-color: #101214;
+//$compl-color: #e5bd39;
+
+///* bronze theme */
+//$main-color: #101214;
+//$compl-color: #d18010;
+//
+///* silver theme */
+//$main-color: #101214;
+//$compl-color: #d0d0d0;
+//
+///* platinum theme */
+//$main-color: #5d6771;
+//$compl-color: #292929;
+
+$base-color: $main-color;
+$page-bg-color: #fff;
+$active-color: $compl-color;
+$neutral-color: darken($main-color, 10%);
+$include-highlights: false;
+$font-family: Segoe UI, 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, 'Lucida Grande', sans-serif;
+
 @import 'sencha-touch/default';
 @import 'sencha-touch/default/all';
 
-// Custom code goes here..
+//@include sencha-toolbar-ui('dark', #1D2429, '');
+@include sencha-tabbar-ui('dark', darken($main-color, 20%), '', darken($compl-color, 10%));
+@include sencha-button-ui('normal', lighten($main-color, 20%), '');
 
-// Examples of using the icon mixin:
-// @include icon('user');
+.x-toolbar.x-docked-top {
+    border-bottom: none !important;
+}
+
+.x-button,
+.x-toolbar .x-button {
+    border: none !important;
+}
+
+.x-button.x-button-back:before,
+.x-button.x-button-forward:before,
+.x-toolbar .x-button.x-button-back:before,
+.x-toolbar .x-button.x-button-forward:before {
+    background: none !important;
+}
+
+.x-button {
+    border-radius: .25em;
+}
+
+.x-button-round {
+    border-radius: .9em;
+}
+
+.x-button-small {
+    border-radius: .15em;
+}
+
+.x-spinner {
+//    &.x-item-disabled {
+//        .x-field-input:before,
+//        .x-spinner-button {
+//            color: $foreground-color !important;
+//            border-color: $field-disabled-border-color !important;
+//            background-color: $field-disabled-background-color !important;
+//            &:before {
+//                color: #d9d9d9;
+//            }
+//        }
+//    }
+    input:disabled {
+        background-color: transparent !important;
+    }
+
+    .x-spinner-button {
+        background: transparent;
+        border: 1px solid $main-color !important;
+    }
+
+    .x-spinner-button-down {
+        border: 1px solid lighten($compl-color, 20%) !important;
+        color: $compl-color !important;
+    }
+
+    .x-button-pressed {
+        background-color: transparent;
+        border: 1px solid lighten($main-color, 10%) !important;
+    }
+
+    &.x-field-grouped-buttons {
+        .x-input-el {
+            text-align: left;
+        }
+    }
+}
+
+.x-hasbadge .x-badge {
+    border-color: #c00 !important;
+    border-radius: 1em !important;
+}
+
+.x-list-normal .x-list-item.x-list-item-tpl,
+.x-list-normal .x-list-item .x-dock-horizontal {
+    border-top: none !important;
+}
